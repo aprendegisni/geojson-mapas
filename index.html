@@ -60,18 +60,19 @@
                     });
 
                     // Mostrar información al hacer clic en un polígono
-                    map.on('click', 'polygon-layer', e => {
-                        const coordinates = e.lngLat;
-                        const properties = e.features[0].properties;
-                        const description = `
-                            <strong>Información:</strong><br>
-                            ${JSON.stringify(properties, null, 2)}
-                        `;
-                        new maplibregl.Popup()
-                            .setLngLat(coordinates)
-                            .setHTML(description)
-                            .addTo(map);
-                    });
+// Mostrar información al hacer clic en un polígono
+map.on('click', 'polygon-layer', e => {
+    const coordinates = e.lngLat;
+    const properties = e.features[0].properties;
+    const description = `
+        <strong>Información:</strong><br>
+        Code: ${properties.Code}
+    `;
+    new maplibregl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(map);
+});
 
                     // Cambiar cursor al pasar sobre un polígono
                     map.on('mouseenter', 'polygon-layer', () => {
